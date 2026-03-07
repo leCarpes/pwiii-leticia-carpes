@@ -138,6 +138,94 @@ Digite o seguinte comando:
 
 **OBS:** O novo arquivo será criado na pasta View do seu projeto.
 
+<br>
+<br>
+
+
+#  Instalar o projeto após o clone (baixar do GitHub)
+
+**Passo 1:**
+
+Execute o comando:
+
+    composer install  
+
+Gera a pasta vendor (pasta que faz rodar a aplicação)
+
+<br>
+
+**Passo 2:**
+
+arquivo .env
+(Arquivo de Variável)
+
+Copie e cole o arquivo.env:
+
+    CTRL C e CTRL V
+
+OBS: Deixe a cópia como (.env)
+
+OBS: Nunca apague o arquivo (.env.example)
+
+<br>
+
+**Passo 3:**
+
+Gerar chave do projeto
+
+Abrir o terminal e executar:
+
+    php artisan key:generate
+
+OBS: php artisan (aparece a ajuda)
+
+<br>
+
+**Passo 4:**
+
+ORM – Object Relational Mapping
+Utiliza a linguagem escolhida pelo framework ou a própria lib para trabalhar com queries de bancos de dados através de arquivos chamados migrations 
+
+**Pasta database:**
+Migration -> classe
+
+Para criar up();
+
+Para desfazer down();
+
+<br>
+
+Abrir terminal e executar:
+
+    php artisan migrate
+
+OBS: cria todas as migrations que não existem
+
+OBS: Dar o yes, para confirmar
+
+<br>
+
+**Passo 5:**
+**Javascript/Typescript** -> dependências importantes como no Webpack
+Serve para interpretar diferentes tipos de arquivos (código) e transforma-los em algo que o navegador interprete
+
+Ainda no terminal, execute os comandos:
+
+    npm install
+
+<br>
+
+    npm run build
+ 
+OBS: npm run build (sempre que tiver alguma alteração no front)
+
+<br>
+
+**Passo 6:**
+
+Rode o projeto:
+
+    Composer run dev
 
 
 
