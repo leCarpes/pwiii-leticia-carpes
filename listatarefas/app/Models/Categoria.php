@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    protected $fillable=[
+    protected $fillable = [
 
-        'nome',
-        'cor'
+        // Campos permitidos
+        'nome'
 
     ];
 
     public function tarefas()
     {
+        // Uma categoria possui várias tarefas
         return $this->hasMany(
             Tarefa::class
         );

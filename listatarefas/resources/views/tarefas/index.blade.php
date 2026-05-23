@@ -1,248 +1,262 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Define a codificação para aceitar acentos -->
+    <meta charset="UTF-8">
 
-<title>Sistema de Tarefas</title>
+    <!-- Faz a página adaptar em celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título exibido na aba -->
+    <title>Sistema de Tarefas</title>
 
 <style>
 
+/* ========================================
+   RESET GERAL
+
+   Remove margens e configurações padrões
+======================================== */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+
+    /* Inclui bordas e padding no tamanho */
+    box-sizing:border-box;
+
+    /* Fonte padrão */
+    font-family:Arial,sans-serif;
 }
+
+/* ========================================
+   CORPO DA PÁGINA
+======================================== */
 
 body{
-
-background:#f5f5f5;
-padding:40px;
-
+    background:#f3f4f6;
+    padding:40px;
 }
+
+/* ========================================
+   CONTAINER PRINCIPAL
+
+   Centraliza o conteúdo
+======================================== */
 
 .container{
-
-max-width:1200px;
-margin:auto;
-
+    max-width:1200px;
+    margin:auto;
 }
+
+/* ========================================
+   TÍTULO PRINCIPAL
+======================================== */
 
 .titulo{
-
-text-align:center;
-font-size:35px;
-color:#333;
-margin-bottom:30px;
-
+    text-align:center;
+    margin-bottom:30px;
+    font-size:35px;
+    color:#1f2937;
 }
+
+/* ========================================
+   CARD DO FORMULÁRIO
+======================================== */
 
 .card{
-
-background:white;
-
-padding:30px;
-
-border-radius:15px;
-
-margin-bottom:30px;
-
-box-shadow:
-0 3px 10px rgba(
-0,0,0,.08
-);
-
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    margin-bottom:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
 }
+
+/* ========================================
+   GRID DOS INPUTS
+
+   Divide em duas colunas
+======================================== */
 
 .form-grid{
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:15px;
-
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
+
+/* ========================================
+   CAMPOS DE ENTRADA
+======================================== */
 
 input,
 textarea,
 select{
-
-width:100%;
-padding:12px;
-
-border-radius:10px;
-
-border:1px solid #ddd;
-
-margin-top:8px;
-
-margin-bottom:15px;
-
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
+
+/* Configuração específica do textarea */
 
 textarea{
+    height:100px;
 
-height:100px;
-resize:none;
-
+    /* Impede redimensionamento */
+    resize:none;
 }
+
+/* ========================================
+   BOTÃO CADASTRAR
+======================================== */
 
 .botao{
+    width:100%;
+    padding:15px;
+    background:#374151;
+    color:white;
+    border:none;
+    border-radius:10px;
 
-width:100%;
-padding:14px;
-
-background:#374151;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-size:15px;
-
+    /* Mãozinha ao passar mouse */
+    cursor:pointer;
 }
 
-.botao:hover{
+/* ========================================
+   LISTA DE TAREFAS
 
-opacity:.9;
-
-}
+   Cria cards automáticos
+======================================== */
 
 .lista{
-
-display:grid;
-
-grid-template-columns:
-repeat(
-auto-fill,
-minmax(300px,1fr)
-);
-
-gap:20px;
-
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:20px;
 }
+
+/* ========================================
+   CARD DA TAREFA
+======================================== */
 
 .item{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
 
-background:white;
-
-padding:20px;
-
-border-radius:15px;
-
-box-shadow:
-0 3px 10px rgba(
-0,0,0,.08
-);
-
+    /* Impede expansão exagerada */
+    min-width:0;
+    overflow:hidden;
 }
+
+/* ========================================
+   TÍTULO DA TAREFA
+======================================== */
 
 .item h2{
+    margin-bottom:10px;
+    color:#1f2937;
 
-color:#374151;
-
-margin-bottom:10px;
-
+    /* Quebra palavras grandes */
+    word-break:break-all;
+    overflow-wrap:break-word;
 }
+
+/* ========================================
+   DESCRIÇÃO
+======================================== */
+
+.descricao{
+
+    /* Quebra textos contínuos */
+    word-break:break-all;
+
+    /* Faz quebra automática */
+    overflow-wrap:break-word;
+
+    /* Mantém dentro do card */
+    max-width:100%;
+
+    margin-top:10px;
+    line-height:1.5;
+}
+
+/* ========================================
+   INFORMAÇÕES
+======================================== */
 
 .info{
-
-margin-top:10px;
-color:#666;
-
-font-size:14px;
-
+    margin-top:10px;
+    color:#6b7280;
 }
 
-.badge{
-
-display:inline-block;
-
-padding:5px 12px;
-
-border-radius:30px;
-
-font-size:12px;
-
-margin-top:15px;
-
-color:white;
-
-}
+/* ========================================
+   PRIORIDADE BAIXA
+======================================== */
 
 .baixa{
-
-background:#6b7280;
-
+    background:#16a34a;
+    color:white;
+    padding:5px 12px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:15px;
 }
+
+/* ========================================
+   PRIORIDADE MÉDIA
+======================================== */
 
 .media{
-
-background:#4b5563;
-
+    background:#eab308;
+    color:white;
+    padding:5px 12px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:15px;
 }
+
+/* ========================================
+   PRIORIDADE ALTA
+======================================== */
 
 .alta{
-
-background:#1f2937;
-
+    background:#dc2626;
+    color:white;
+    padding:5px 12px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:15px;
 }
+
+/* ========================================
+   BOTÃO EXCLUIR
+======================================== */
 
 .excluir{
-
-width:100%;
-
-margin-top:15px;
-
-padding:10px;
-
-background:#dc2626;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
+    width:100%;
+    padding:10px;
+    margin-top:15px;
+    background:#374151;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
+
+/* ========================================
+   MENSAGEM DE ERRO
+======================================== */
 
 .erro{
-
-background:#fee2e2;
-
-padding:15px;
-
-margin-bottom:20px;
-
-border-radius:10px;
-
-color:#991b1b;
-
-}
-
-.sucesso{
-
-background:#dcfce7;
-
-padding:15px;
-
-margin-bottom:20px;
-
-border-radius:10px;
-
-color:#166534;
-
+    background:#fecaca;
+    color:#991b1b;
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:10px;
 }
 
 </style>
@@ -251,239 +265,159 @@ color:#166534;
 
 <body>
 
+<!-- Container principal -->
 <div class="container">
 
-<h1 class="titulo">
+    <!-- Título da página -->
+    <h1 class="titulo">
+        Sistema de Gerenciamento de Tarefas
+    </h1>
 
-Sistema de Tarefas
+    <!-- Verifica se existem erros -->
+    @if($errors->any())
 
-</h1>
+    <div class="erro">
 
+        <ul>
+        <!-- Percorre todos os erros -->
+        @foreach($errors->all() as $erro)
 
-@if(session('sucesso'))
+            <li>{{$erro}}</li>
 
-<div class="sucesso">
+        @endforeach
+        </ul>
+    </div>
 
-{{session('sucesso')}}
+    @endif
 
+    <!-- Card do formulário -->
+    <div class="card">
+
+        <!-- Formulário enviado para /tarefas -->
+        <form method="POST" action="/tarefas">
+
+            <!-- Token de segurança Laravel -->
+            @csrf
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Título</label>
+
+                    <!-- Campo título -->
+                    <input
+                    type="text"
+                    name="titulo"
+                    placeholder="Digite o título"
+                    value="{{old('titulo')}}">
+                </div>
+
+                <div>
+                    <label>Prioridade</label>
+
+                    <select name="prioridade">
+
+                        <option value="">Selecione</option>
+                        <option>Baixa</option>
+                        <option>Média</option>
+                        <option>Alta</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>Descrição</label>
+
+            <!-- Campo descrição -->
+            <textarea
+            name="descricao"
+            placeholder="Digite a descrição">{{old('descricao')}}</textarea>
+
+            <div class="form-grid">
+                <div>
+                    <label>Data de entrega</label>
+                    <input type="date" name="data_entrega">
+                </div>
+
+                <div>
+                    <label>Categoria</label>
+                    <select name="categoria_id">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <!-- Percorre categorias -->
+                        @foreach($categorias as $categoria)
+
+                        <option value="{{$categoria->id}}">
+                            {{$categoria->nome}}
+                        </option>
+
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <!-- Botão cadastrar -->
+            <button class="botao">
+                Cadastrar tarefa
+            </button>
+        </form>
+    </div>
+
+    <!-- Lista de tarefas -->
+    <div class="lista">
+
+        <!-- Percorre todas as tarefas -->
+        @foreach($tarefas as $tarefa)
+
+        <div class="item">
+
+            <!-- Título -->
+            <h2>{{$tarefa->titulo}}</h2>
+
+            <!-- Descrição -->
+            <p class="descricao">
+                {{$tarefa->descricao}}
+            </p>
+
+            <!-- Data -->
+            <div class="info">
+                📅 {{$tarefa->data_entrega}}
+            </div>
+
+            <!-- Categoria -->
+            <div class="info">
+                📁 {{$tarefa->categoria->nome}}
+            </div>
+
+            <!-- Define a cor da prioridade -->
+
+            @if($tarefa->prioridade=="Baixa")
+                <div class="baixa">Baixa</div>
+            @endif
+
+            @if($tarefa->prioridade=="Média")
+                <div class="media">Média</div>
+            @endif
+
+            @if($tarefa->prioridade=="Alta")
+                <div class="alta">Alta</div>
+            @endif
+
+            <!-- Formulário de exclusão -->
+            <form method="POST" action="/tarefas/{{$tarefa->id}}">
+                @csrf
+                <!-- Altera método para DELETE -->
+                @method('DELETE')
+
+                <button class="excluir">
+                    Excluir
+                </button>
+            </form>
+        </div>
+        @endforeach
+    </div>
 </div>
-
-@endif
-
-
-@if($errors->any())
-
-<div class="erro">
-
-<ul>
-
-@foreach($errors->all() as $erro)
-
-<li>{{$erro}}</li>
-
-@endforeach
-
-</ul>
-
-</div>
-
-@endif
-
-
-<div class="card">
-
-<form method="POST" action="/tarefas">
-
-@csrf
-
-<div class="form-grid">
-
-<div>
-
-<label>Título</label>
-
-<input
-type="text"
-name="titulo"
-value="{{old('titulo')}}"
->
-
-</div>
-
-<div>
-
-<label>Prioridade</label>
-
-<select name="prioridade">
-
-<option value="">
-Selecione
-</option>
-
-<option>Baixa</option>
-<option>Média</option>
-<option>Alta</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<label>Descrição</label>
-
-<textarea
-name="descricao"
->{{old('descricao')}}</textarea>
-
-
-<div class="form-grid">
-
-<div>
-
-<label>Data</label>
-
-<input
-type="date"
-name="data_entrega"
->
-
-</div>
-
-
-<div>
-
-<label>Categoria</label>
-
-<select
-name="categoria_id"
->
-
-<option>
-
-Selecione
-
-</option>
-
-@foreach(
-$categorias as $categoria
-)
-
-<option
-value="{{$categoria->id}}"
->
-
-{{$categoria->nome}}
-
-</option>
-
-@endforeach
-
-</select>
-
-</div>
-
-</div>
-
-<button class="botao">
-
-Cadastrar tarefa
-
-</button>
-
-</form>
-
-</div>
-
-
-<div class="lista">
-
-@foreach(
-$tarefas as $tarefa
-)
-
-<div class="item">
-
-<h2>
-
-{{$tarefa->titulo}}
-
-</h2>
-
-<p>
-
-{{$tarefa->descricao}}
-
-</p>
-
-<div class="info">
-
-📅 {{$tarefa->data_entrega}}
-
-</div>
-
-<div class="info">
-
-📁 {{$tarefa->categoria->nome}}
-
-</div>
-
-
-@if($tarefa->prioridade=="Baixa")
-
-<span class="badge baixa">
-
-{{$tarefa->prioridade}}
-
-</span>
-
-@endif
-
-@if($tarefa->prioridade=="Média")
-
-<span class="badge media">
-
-{{$tarefa->prioridade}}
-
-</span>
-
-@endif
-
-@if($tarefa->prioridade=="Alta")
-
-<span class="badge alta">
-
-{{$tarefa->prioridade}}
-
-</span>
-
-@endif
-
-
-<form
-method="POST"
-action="/tarefas/{{$tarefa->id}}"
->
-
-@csrf
-@method('DELETE')
-
-<button class="excluir">
-
-Excluir
-
-</button>
-
-</form>
-
-</div>
-
-@endforeach
-
-</div>
-
-</div>
-
 </body>
 </html>
