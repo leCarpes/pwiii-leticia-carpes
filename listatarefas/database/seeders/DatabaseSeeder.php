@@ -2,22 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+/**
+ * DatabaseSeeder
+ *
+ * Ponto central para executar seeders do projeto.
+ * - Chama os seeders necessários em ordem.
+ * - Ao executar `php artisan db:seed`, este método é invocado.
+ */
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Chama o seeder de categorias primeiro para garantir FK em outros seeders
+        $this->call([
+            CategoriaSeeder::class,
+            TarefaSeeder::class,
         ]);
     }
 }
