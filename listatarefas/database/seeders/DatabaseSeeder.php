@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // Chama o seeder de categorias primeiro para garantir FK em outros seeders
         $this->call([
-            CategoriaSeeder::class,
-            TarefaSeeder::class,
+            CategoriaSeeder::class
+            //TarefaSeeder::class
         ]);
     }
 }
